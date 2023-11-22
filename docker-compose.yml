@@ -13,6 +13,10 @@ services:
     env_file: .env
     environment:
       RAILS_ENV: development
+      RAILS_LOG_TO_STDOUT: true
+      RAILS_MAX_THREADS: 1
+      RAILS_DEVELOPMENT_HOSTS: ${RAILS_DEVELOPMENT_HOSTS}
+      WEBAUTHN_ORIGIN_HOSTS: ${WEBAUTHN_ORIGIN_URL}
     networks:
       - backend
     labels:
