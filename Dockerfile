@@ -1,4 +1,4 @@
-FROM ruby:3.2
+FROM ruby:3.2.1
 
 ENV BUNDLER_VERSION=2.4.6
 
@@ -18,5 +18,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY . ./
+EXPOSE 3000
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+# ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+CMD ["/bin/sh"]

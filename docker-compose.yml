@@ -13,6 +13,19 @@ services:
     env_file: .env
     environment:
       RAILS_ENV: development
+    networks:
+      - backend
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.app.entrypoints: "websecure"
+      traefik.http.routers.app.rule: "Host(`${DEVISE_PASSKEYS_HOST}`)"
+      traefik.http.routers.app.tls: "true"
+      traefik.http.routers.app.tls.certresolver: "cloudflare"
 
 volumes:
   gem_cache:
+
+networks:
+  backend:
+    name: backend
+
