@@ -5,7 +5,7 @@ module RelyingParty
     return WebAuthn::RelyingParty.new(
       # This value needs to match `window.location.origin` evaluated by
       # the User Agent during registration and authentication ceremonies.
-      origin: "https://#{ENV.fetch('WEBAUTHN_ORIGIN_URL')}", # Needs to be the frontend using this service for authentication..
+      origin: ENV.fetch('WEBAUTHN_ORIGIN_URL','https://devise-passkeys.test'), # Needs to be the frontend using this service for authentication..
 
       # Relying Party name for display purposes
       name: "devise-passkeys-template"
